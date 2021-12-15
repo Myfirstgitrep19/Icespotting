@@ -10,22 +10,21 @@ const SearchContainer = styled(View)`
   background-color: ${(props) => props.theme.colors.brand.primary};
 `;
 
-export const Search = ({ isFavouritesToggled, onFavouritesToggle }) => {
-  const { keyword, search } = useContext(LocationContext);
-  const [searchKeyword, setSearchKeyword] = useState(keyword);
+export const SearchIcecream = (props) => {
+  const { iceCream, searchIceCream } = useContext(LocationContext);
+  const [searchKeyword, setSearchKeyword] = useState(iceCream);
 
   useEffect(() => {
-    setSearchKeyword(keyword);
-  }, [keyword]);
+    setSearchKeyword(iceCream);
+  }, [iceCream]);
 
   return (
     <SearchContainer>
       <Searchbar
-        placeholder="Search for a location"
+        placeholder="Search for a meal"
         value={searchKeyword}
-        icon={isFavouritesToggled ? 'heart' : 'heart-outline'}
-        onIconPress={onFavouritesToggle}
-        onSubmitEditing={() => search(searchKeyword)}
+        icon="hamburger"
+        onSubmitEditing={() => searchIceCream(searchKeyword)}
         onChangeText={(text) => {
           setSearchKeyword(text);
         }}
