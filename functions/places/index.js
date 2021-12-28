@@ -36,7 +36,8 @@ module.exports.placesRequest = (request, response, client) => {
       params: {
         location,
         radius: 9000,
-        type: ['cafe', 'bar', 'restaurant', 'food'],
+        type: ['cafe', 'bar', 'restaurant', 'ice-cream parlour', 'food'],
+        keyword: 'ice-cream parlour',
         key: 'AIzaSyBZqBqmfgvSILa3OFHkvgwTI_3U2H4WtBk',
       },
       timeout: 5000,
