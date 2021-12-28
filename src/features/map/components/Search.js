@@ -7,24 +7,27 @@ import { LocationContext } from '../../../services/location/LocationContext';
 
 const SearchContainer = styled(View)`
   padding: ${(props) => props.theme.space[3]};
-  background-color: ${(props) => props.theme.colors.brand.primary};
+  position: absolute;
+  z-index: 999;
+  top: 40px;
+  width: 100%;
 `;
 
-export const SearchIcecream = (props) => {
-  const { iceCream, searchIceCream } = useContext(LocationContext);
-  const [searchKeyword, setSearchKeyword] = useState(iceCream);
+export const Search = () => {
+  const { keyword, search } = useContext(LocationContext);
+  const [searchKeyword, setSearchKeyword] = useState(keyword);
 
   useEffect(() => {
-    setSearchKeyword(iceCream);
-  }, [iceCream]);
+    setSearchKeyword(keyword);
+  }, [keyword]);
 
   return (
     <SearchContainer>
       <Searchbar
-        placeholder="Search for a flavour"
+        placeholder="Search for a location"
+        icon="map"
         value={searchKeyword}
-        icon="ice-cream"
-        onSubmitEditing={() => searchIceCream(searchKeyword)}
+        onSubmitEditing={() => search(searchKeyword)}
         onChangeText={(text) => {
           setSearchKeyword(text);
         }}
