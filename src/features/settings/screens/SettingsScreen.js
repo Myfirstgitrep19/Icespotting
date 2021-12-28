@@ -83,15 +83,6 @@ export const SettingsScreen = ({ navigation }) => {
           />
           <Spacer />
           <SettingsItem
-            title="Favourites"
-            description="View your favourites"
-            onPress={() => navigation.navigate('Camera')}
-            left={(props) => (
-              <List.Icon {...props} color={colors.ui.error} icon="camera" />
-            )}
-          />
-          <Spacer />
-          <SettingsItem
             title="Logout"
             onPress={onLogout}
             left={(props) => (
