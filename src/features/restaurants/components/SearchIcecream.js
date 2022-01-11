@@ -21,9 +21,9 @@ export const SearchIcecream = (props) => {
   return (
     <SearchContainer>
       <Searchbar
-        placeholder="Search for a meal"
+        placeholder="Search for a flavour"
         value={searchKeyword}
-        icon="hamburger"
+        icon="ice-cream"
         onSubmitEditing={() => searchIceCream(searchKeyword)}
         onChangeText={(text) => {
           setSearchKeyword(text);

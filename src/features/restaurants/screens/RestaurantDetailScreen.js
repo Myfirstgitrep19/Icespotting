@@ -152,6 +152,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
                   <Divider />
                 </View>
               )
+
             )
           ) : (
             <Text>Ta lodziarnia z nami nie współpracuje jeszcze !</Text>

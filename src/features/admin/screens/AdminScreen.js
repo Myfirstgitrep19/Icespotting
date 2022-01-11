@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useContext, useState, useCallback } from 'react';
 import { ImageBackground, TouchableOpacity, View } from 'react-native';
 import { List, Avatar } from 'react-native-paper';
@@ -33,7 +34,7 @@ const AvatarContainer = styled(View)`
   align-items: center;
 `;
 
-export const SettingsScreen = ({ navigation }) => {
+export const AdminScreen = ({ navigation }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   const [photo, setPhoto] = useState(null);
 
@@ -52,43 +53,29 @@ export const SettingsScreen = ({ navigation }) => {
     <SettingsBackground>
       <TransparentSafeArea>
         <AvatarContainer>
-          <TouchableOpacity onPress={() => navigation.navigate('Camera')}>
-            {!photo && (
-              <Avatar.Icon
-                size={180}
-                icon="account-circle"
-                backgroundColor={colors.brand.primary}
-              />
-            )}
-            {photo && (
-              <Avatar.Image
-                size={180}
-                source={{ uri: photo }}
-                backgroundColor={colors.brand.primary}
-              />
-            )}
-          </TouchableOpacity>
           <Spacer position="top" size="large">
             <Text variant="label">{user.email}</Text>
           </Spacer>
         </AvatarContainer>
         <List.Section>
           <SettingsItem
-            title="Favourites"
-            description="View your favourites"
-            onPress={() => navigation.navigate('Favourites')}
+            title="Restaurant"
+            description="View your restaurant"
+            onPress={() => navigation.navigate('Restaurant')}
             left={(props) => (
-              <List.Icon {...props} color={colors.ui.error} icon="heart" />
+              <List.Icon {...props} color={colors.ui.error} icon="food" />
             )}
           />
           <Spacer />
           <SettingsItem
-            title="Logout"
-            onPress={onLogout}
+            title="Menu"
+            description="View your menu"
+            onPress={() => navigation.navigate('Menu')}
             left={(props) => (
-              <List.Icon {...props} color={colors.ui.secondary} icon="logout" />
+              <List.Icon {...props} color={colors.ui.error} icon="ice-cream" />
             )}
           />
+          <Spacer />
         </List.Section>
       </TransparentSafeArea>
     </SettingsBackground>
