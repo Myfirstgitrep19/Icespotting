@@ -33,7 +33,9 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
   const { addToCart } = useContext(CartContext);
 
   const { restaurant, userPlaceId } = route.params;
-  // console.log(userPlaceId)
+  // console.log(special, 'restaurant resDet');
+  // console.log(userPlaceId, 'restaurant resDet');
+
   var db = firebase.firestore();
 
   useEffect(() => {
@@ -49,7 +51,7 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               setMilkshake(result.milkshake);
               setSpecial(result.Special);
             }
-            console.log(querySnapshot.data());
+            // console.log(querySnapshot.data())
           });
       }
     };
@@ -95,8 +97,8 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
       <ScrollView>
         <RestaurantInfoCard restaurant={restaurant} />
         <List.Accordion
-          title="Pierwsze Danie"
-          left={(props) => <List.Icon {...props} icon="food-variant" />}
+          title="Icecreams"
+          left={(props) => <List.Icon {...props} icon="ice-cream" />}
           expanded={breakfastExpanded}
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
         >
@@ -121,13 +123,13 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
               )
             )
           ) : (
-            <Text>Ta restauracja nie współpracuje jeszcze z nami !</Text>
+            <Text>Ta lodziarnia z nami nie współpracuje jeszcze !</Text>
           )}
         </List.Accordion>
         <Divider />
         <List.Accordion
-          title="Drugie danie"
-          left={(props) => <List.Icon {...props} icon="hamburger" />}
+          title="MilkShakes"
+          left={(props) => <List.Icon {...props} icon="food-variant" />}
           expanded={lunchExpanded}
           onPress={() => setLunchExpanded(!lunchExpanded)}
         >
@@ -145,21 +147,21 @@ export const RestaurantDetailScreen = ({ route, navigation }) => {
                   />
                 </View>
               ) : (
-                <View>
+                <View key={key}>
                   <List.Item title={el?.toString()} />
                   <Divider />
                 </View>
               )
             )
           ) : (
-            <Text>Ta restauracja nie współpracuje jeszcze z nami !</Text>
+            <Text>Ta lodziarnia z nami nie współpracuje jeszcze !</Text>
           )}
         </List.Accordion>
       </ScrollView>
       <Spacer position="bottom" size="large">
         {restaurant.placeId == userPlaceId ? (
           <TextInput
-            label="Our Special meal price"
+            label="Special icecream price"
             style={{ marginHorizontal: 10, marginVertical: 10 }}
             value={special}
             numeric
